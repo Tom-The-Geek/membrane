@@ -1,0 +1,45 @@
+// I have no idea if this is a good way of doing this but idk.
+graph {
+    compound=true;
+    node [shape=box];
+    splines="ortho";
+    rankdir="LR";
+
+    subgraph cluster_0 {
+        bgcolor="lightblue";
+        label="Server A";
+        rankdir="LR";
+        node [shape=box];
+
+        "Backend service client"
+        "Membrane tunneler"
+
+        "Backend service client" -- "Membrane tunneler" [weight = 10];
+    }
+
+    subgraph cluster_1 {
+        bgcolor="lightgreen";
+        label="Membrane TLS tunnel";
+        rankdir="LR";
+        node [shape=box];
+
+        "The internet"
+    }
+
+    subgraph cluster_2 {
+        bgcolor="lightblue";
+        label="Server B";
+        rankdir="LR";
+        node [shape=box];
+
+        "Membrane gateway"
+        "Backend service"
+
+        "Backend service" -- "Membrane gateway";
+    }
+
+    rankdir="LR";
+
+    "Membrane tunneler" -- "The internet" [weight=10];
+    "Membrane gateway" -- "The internet";
+}
