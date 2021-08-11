@@ -3,6 +3,7 @@ A TLS proxy for exposing backend services to the internet safely.
 
 ## Architecture
 ![architecture diagram](docs/architecture.png)
+
 _(I have no idea how to make this image better lol)_
 
 The gateway is a server that exposes an insecure service over TLS, and a tunneler is a client to a gateway that exposes the service in plaintext on localhost.
